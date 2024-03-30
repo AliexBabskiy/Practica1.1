@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BdPracticaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Clients" />
+          </Key>
+          <Property Name="ID_Clients" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Coffee_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Coffee">
+          <Key>
+            <PropertyRef Name="ID_Coffee" />
+          </Key>
+          <Property Name="ID_Coffee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Coffee_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Coffee_Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMP">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="MIDDLENAME" Type="nvarchar" MaxLength="80" />
+          <Property Name="Clients_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK__Clients__Coffee___3C69FB99">
+          <End Role="Coffee" Type="Self.Coffee" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coffee">
+              <PropertyRef Name="ID_Coffee" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Coffee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMP__Clients_ID__398D8EEE">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="EMP" Type="Self.EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Clients" />
+            </Principal>
+            <Dependent Role="EMP">
+              <PropertyRef Name="Clients_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BdPracticaModelContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coffee" EntityType="Self.Coffee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clients__Coffee___3C69FB99" Association="Self.FK__Clients__Coffee___3C69FB99">
+            <End Role="Coffee" EntitySet="Coffee" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMP__Clients_ID__398D8EEE" Association="Self.FK__EMP__Clients_ID__398D8EEE">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="EMP" EntitySet="EMP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BdPracticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Clients" />
+          </Key>
+          <Property Name="ID_Clients" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Coffee_ID" Type="Int32" />
+          <NavigationProperty Name="Coffee" Relationship="Self.FK__Clients__Coffee___3C69FB99" FromRole="Clients" ToRole="Coffee" />
+          <NavigationProperty Name="EMP" Relationship="Self.FK__EMP__Clients_ID__398D8EEE" FromRole="Clients" ToRole="EMP" />
+        </EntityType>
+        <EntityType Name="Coffee">
+          <Key>
+            <PropertyRef Name="ID_Coffee" />
+          </Key>
+          <Property Name="ID_Coffee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Coffee_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Coffee_Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__Coffee___3C69FB99" FromRole="Coffee" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="EMP">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SURNAME" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MIDDLENAME" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Clients_ID" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__EMP__Clients_ID__398D8EEE" FromRole="EMP" ToRole="Clients" />
+        </EntityType>
+        <Association Name="FK__Clients__Coffee___3C69FB99">
+          <End Role="Coffee" Type="Self.Coffee" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coffee">
+              <PropertyRef Name="ID_Coffee" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Coffee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMP__Clients_ID__398D8EEE">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="EMP" Type="Self.EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Clients" />
+            </Principal>
+            <Dependent Role="EMP">
+              <PropertyRef Name="Clients_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BdPracticaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Coffee" EntityType="Self.Coffee" />
+          <EntitySet Name="EMP" EntityType="Self.EMP" />
+          <AssociationSet Name="FK__Clients__Coffee___3C69FB99" Association="Self.FK__Clients__Coffee___3C69FB99">
+            <End Role="Coffee" EntitySet="Coffee" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMP__Clients_ID__398D8EEE" Association="Self.FK__EMP__Clients_ID__398D8EEE">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="EMP" EntitySet="EMP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BdPracticaModelContainer" CdmEntityContainer="BdPracticaEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="BdPracticaModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ID_Clients" ColumnName="ID_Clients" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="Coffee_ID" ColumnName="Coffee_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coffee">
+            <EntityTypeMapping TypeName="BdPracticaModel.Coffee">
+              <MappingFragment StoreEntitySet="Coffee">
+                <ScalarProperty Name="ID_Coffee" ColumnName="ID_Coffee" />
+                <ScalarProperty Name="Coffee_Name" ColumnName="Coffee_Name" />
+                <ScalarProperty Name="Coffee_Price" ColumnName="Coffee_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP">
+            <EntityTypeMapping TypeName="BdPracticaModel.EMP">
+              <MappingFragment StoreEntitySet="EMP">
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+                <ScalarProperty Name="Clients_ID" ColumnName="Clients_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
