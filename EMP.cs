@@ -20,6 +20,6 @@ namespace PrPract1._1
         public string MIDDLENAME { get; set; }
         public Nullable<int> Clients_ID { get; set; }
     
-        public virtual Clients Clients { get; set; }
+        public virtual Clients Clients { private get; set; }
     }
 }

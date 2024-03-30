@@ -24,8 +24,8 @@ namespace PrPract1._1
         public string ClientName { get; set; }
         public Nullable<int> Coffee_ID { get; set; }
     
-        public virtual Coffee Coffee { get; set; }
+        public virtual Coffee Coffee { private get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMP> EMP { get; set; }
+        public virtual ICollection<EMP> EMP { private get; set; }
     }
 }

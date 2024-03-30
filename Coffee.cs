@@ -25,6 +25,6 @@ namespace PrPract1._1
         public int Coffee_Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clients> Clients { get; set; }
+        public virtual ICollection<Clients> Clients { private get; set; }
     }
 }
