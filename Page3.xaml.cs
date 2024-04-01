@@ -30,7 +30,6 @@ namespace PrPract1._1
         private void BtDob_Cl(object sender, RoutedEventArgs e)
         {
             Coffee o = new Coffee();
-            o.ID_Coffee = Convert.ToInt32(text1.Text);
             o.Coffee_Name = Convert.ToString(text2.Text);
             o.Coffee_Price = Convert.ToInt32(text3.Text);
 
@@ -45,7 +44,6 @@ namespace PrPract1._1
             {
                 var selected = tablic.SelectedItem as Coffee;
 
-                selected.ID_Coffee = Convert.ToInt32(text1.Text);
                 selected.Coffee_Name = Convert.ToString(text2.Text);
                 selected.Coffee_Price = Convert.ToInt32(text3.Text);
 
@@ -56,10 +54,10 @@ namespace PrPract1._1
 
         private void BtDel_Cl(object sender, RoutedEventArgs e)
         {
-            var selectedOrders = tablic.SelectedItem as Coffee;
-            if (selectedOrders != null)
+            var selected = tablic.SelectedItem as Coffee;
+            if (selected != null)
             {
-                context.Coffee.Remove(selectedOrders);
+                context.Coffee.Remove(selected);
                 context.SaveChanges();
                 tablic.ItemsSource = context.Coffee.ToList();
             }

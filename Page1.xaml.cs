@@ -31,7 +31,6 @@ namespace PrPract1._1
         private void BtDob_Cl(object sender, RoutedEventArgs e)
         {
             EMP o = new EMP();
-            o.ID_EMP = Convert.ToInt32(text1.Text);
             o.SURNAME = Convert.ToString(text2.Text);
             o.FIRST_NAME = Convert.ToString(text3.Text);
             o.MIDDLENAME = Convert.ToString(text4.Text);
@@ -47,7 +46,6 @@ namespace PrPract1._1
             {
                 var selected = tablic.SelectedItem as EMP;
 
-                selected.ID_EMP = Convert.ToInt32(text1.Text);
                 selected.SURNAME = Convert.ToString(text2.Text);
                 selected.FIRST_NAME = Convert.ToString(text3.Text);
                 selected.MIDDLENAME = Convert.ToString(text4.Text);
@@ -59,10 +57,10 @@ namespace PrPract1._1
 
         private void BtDel_Cl(object sender, RoutedEventArgs e)
         {
-            var selectedOrders = tablic.SelectedItem as EMP;
-            if (selectedOrders != null)
+            var selected = tablic.SelectedItem as EMP;
+            if (selected != null)
             {
-                context.EMP.Remove(selectedOrders);
+                context.EMP.Remove(selected);
                 context.SaveChanges();
                 tablic.ItemsSource = context.EMP.ToList();
             }
@@ -78,9 +76,6 @@ namespace PrPract1._1
                 text2.Text = selected.SURNAME.ToString();
                 text3.Text = selected.FIRST_NAME.ToString();
                 text4.Text = selected.MIDDLENAME.ToString();
-
-                context.SaveChanges();
-                tablic.ItemsSource = context.EMP.ToList();
             }
         }
     }

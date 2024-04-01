@@ -31,7 +31,6 @@ namespace PrPract1._1
         private void BtDob_Cl(object sender, RoutedEventArgs e)
         {
             Client o = new Client();
-            o.ID_Client = Convert.ToInt32(text1.Text);
             o.ClientName = Convert.ToString(text2.Text);
 
             context.Client.Add(o);
@@ -45,7 +44,6 @@ namespace PrPract1._1
             {
                 var selected = tablic.SelectedItem as Client;
 
-                selected.ID_Client = Convert.ToInt32(text1.Text);
                 selected.ClientName = Convert.ToString(text2.Text);
 
                 context.SaveChanges();
@@ -55,10 +53,10 @@ namespace PrPract1._1
 
         private void BtDel_Cl(object sender, RoutedEventArgs e)
         {
-            var selectedOrders = tablic.SelectedItem as Client;
-            if (selectedOrders != null)
+            var selected = tablic.SelectedItem as Client;
+            if (selected != null)
             {
-                context.Client.Remove(selectedOrders);
+                context.Client.Remove(selected);
                 context.SaveChanges();
                 tablic.ItemsSource = context.Client.ToList();
             }

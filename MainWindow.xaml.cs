@@ -39,20 +39,5 @@ namespace PrPract1._1
         {
             FrameP.Content = new Page3();
         }
-
-        private void BtDob_Cl(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtIzm_Cl(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtDel_Cl(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
