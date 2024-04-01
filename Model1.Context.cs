@@ -25,8 +25,9 @@ namespace PrPract1._1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clients> Clients { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Coffee> Coffee { get; set; }
+        public virtual DbSet<ConnectId> ConnectId { get; set; }
         public virtual DbSet<EMP> EMP { get; set; }
     }
 }

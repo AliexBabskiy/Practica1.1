@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище BdPracticaModelContainer" CdmEntityContainer="BdPracticaEntities">
-    <EntitySetMapping Name="Clients">
-      <EntityTypeMapping TypeName="BdPracticaModel.Clients">
-        <MappingFragment StoreEntitySet="Clients">
-          <ScalarProperty Name="ID_Clients" ColumnName="ID_Clients" />
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="BdPracticaModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
           <ScalarProperty Name="ClientName" ColumnName="ClientName" />
-          <ScalarProperty Name="Coffee_ID" ColumnName="Coffee_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -19,6 +18,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ConnectId">
+      <EntityTypeMapping TypeName="BdPracticaModel.ConnectId">
+        <MappingFragment StoreEntitySet="ConnectId">
+          <ScalarProperty Name="ID_ConnectId" ColumnName="ID_ConnectId" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="Clients_ID" ColumnName="Clients_ID" />
+          <ScalarProperty Name="Coffee_ID" ColumnName="Coffee_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="EMP">
       <EntityTypeMapping TypeName="BdPracticaModel.EMP">
         <MappingFragment StoreEntitySet="EMP">
@@ -26,7 +35,6 @@
           <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
           <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
           <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
-          <ScalarProperty Name="Clients_ID" ColumnName="Clients_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

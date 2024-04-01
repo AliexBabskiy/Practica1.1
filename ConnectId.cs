@@ -12,20 +12,15 @@ namespace PrPract1._1
     using System;
     using System.Collections.Generic;
     
-    public partial class EMP
+    public partial class ConnectId
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EMP()
-        {
-            this.ConnectId = new HashSet<ConnectId>();
-        }
+        public int ID_ConnectId { get; set; }
+        public Nullable<int> EMP_ID { get; set; }
+        public Nullable<int> Clients_ID { get; set; }
+        public Nullable<int> Coffee_ID { get; set; }
     
-        public int ID_EMP { get; set; }
-        public string SURNAME { get; set; }
-        public string FIRST_NAME { get; set; }
-        public string MIDDLENAME { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConnectId> ConnectId { private get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Coffee Coffee { get; set; }
+        public virtual EMP EMP { get; set; }
     }
 }

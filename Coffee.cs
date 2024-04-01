@@ -17,7 +17,7 @@ namespace PrPract1._1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Coffee()
         {
-            this.Clients = new HashSet<Clients>();
+            this.ConnectId = new HashSet<ConnectId>();
         }
     
         public int ID_Coffee { get; set; }
@@ -25,6 +25,6 @@ namespace PrPract1._1
         public int Coffee_Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clients> Clients { private get; set; }
+        public virtual ICollection<ConnectId> ConnectId { private get; set; }
     }
 }

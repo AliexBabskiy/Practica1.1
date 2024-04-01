@@ -26,5 +26,58 @@ namespace PrPract1._1
             InitializeComponent();
             tablic.ItemsSource = context.Coffee.ToList();
         }
+
+        private void BtDob_Cl(object sender, RoutedEventArgs e)
+        {
+            Coffee o = new Coffee();
+            o.ID_Coffee = Convert.ToInt32(text1.Text);
+            o.Coffee_Name = Convert.ToString(text2.Text);
+            o.Coffee_Price = Convert.ToInt32(text3.Text);
+
+            context.Coffee.Add(o);
+            context.SaveChanges();
+            tablic.ItemsSource = context.Coffee.ToList();
+        }
+
+        private void BtIzm_Cl(object sender, RoutedEventArgs e)
+        {
+            if (tablic.SelectedItem != null)
+            {
+                var selected = tablic.SelectedItem as Coffee;
+
+                selected.ID_Coffee = Convert.ToInt32(text1.Text);
+                selected.Coffee_Name = Convert.ToString(text2.Text);
+                selected.Coffee_Price = Convert.ToInt32(text3.Text);
+
+                context.SaveChanges();
+                tablic.ItemsSource = context.Coffee.ToList();
+            }
+        }
+
+        private void BtDel_Cl(object sender, RoutedEventArgs e)
+        {
+            var selectedOrders = tablic.SelectedItem as Coffee;
+            if (selectedOrders != null)
+            {
+                context.Coffee.Remove(selectedOrders);
+                context.SaveChanges();
+                tablic.ItemsSource = context.Coffee.ToList();
+            }
+        }
+
+        private void tablic_Dob(object sender, SelectionChangedEventArgs e)
+        {
+            if (tablic.SelectedItem != null)
+            {
+                var selected = tablic.SelectedItem as Coffee;
+
+                text1.Text = selected.ID_Coffee.ToString();
+                text2.Text = selected.Coffee_Name.ToString();
+                text3.Text = selected.Coffee_Price.ToString();
+
+                context.SaveChanges();
+                tablic.ItemsSource = context.Coffee.ToList();
+            }
+        }
     }
 }
